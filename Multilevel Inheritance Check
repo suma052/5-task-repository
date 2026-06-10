@@ -1,0 +1,67 @@
+class Car {
+    protected String Color;
+    protected String Model;
+
+    Car(String Color, String Model) {
+        this.Color = Color;
+        this.Model = Model;
+    }
+
+    public static void CarType() {
+        System.out.println("Utility Vehicle");
+    }
+}
+
+class Toyota extends Car {
+    protected String MadeIn;
+    protected int MadeYear;
+
+    Toyota(String Color, String Model, String MadeIn, int MadeYear) {
+        super(Color, Model);
+        this.MadeIn = MadeIn;
+        this.MadeYear = MadeYear;
+    }
+
+    public static void CarType() {
+        System.out.println("Toyota Car");
+    }
+
+    void Status() {
+        System.out.println("Running");
+    }
+}
+
+class ToyotaPrenio extends Toyota {
+    private String BodyType;
+
+    ToyotaPrenio(String Color, String Model, String MadeIn,
+                 int MadeYear, String BodyType) {
+        super(Color, Model, MadeIn, MadeYear);
+        this.BodyType = BodyType;
+    }
+
+    void showInfo() {
+        System.out.println("Color: " + Color);
+        System.out.println("Model: " + Model);
+        System.out.println("Made In: " + MadeIn);
+        System.out.println("Made Year: " + MadeYear);
+        System.out.println("Body Type: " + BodyType);
+    }
+
+    public static void CarType() {
+        System.out.println("Toyota Premio");
+    }
+}
+
+public class MainCar2 {
+    public static void main(String[] args) {
+
+        ToyotaPrenio t =
+            new ToyotaPrenio("White", "Premio GX", "Japan", 2024, "Sedan");
+
+        t.showInfo();
+        t.Status();
+
+        ToyotaPrenio.CarType();
+    }
+}
