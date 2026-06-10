@@ -1,0 +1,86 @@
+class Car {
+    protected String color;
+    protected String model;
+
+    Car(String color, String model) {
+        this.color = color;
+        this.model = model;
+        System.out.println("Car constructor Called");
+    }
+
+    public void carType() {
+        System.out.println("Generic Car");
+    }
+
+    public void status() {
+        System.out.println("Running");
+    }
+}
+
+class Toyota extends Car {
+    protected String madeIn;
+    protected int madeYear;
+
+    public Toyota(String color, String model, String madeIn, int madeYear) {
+        super(color, model);
+        this.madeIn = madeIn;
+        this.madeYear = madeYear;
+        System.out.println("Toyota constructor called");
+    }
+
+    @Override
+    public void carType() {
+        System.out.println("Car type: Passenger Car");
+    }
+
+    @Override
+    public void status() {
+        System.out.println("status: Car status information");
+    }
+}
+
+class ToyotaPremio extends Toyota {
+    protected String bodyType; 
+
+    public ToyotaPremio(String color, String model, String madeIn, int madeYear, String bodyType) {
+        super(color, model, madeIn, madeYear);
+        this.bodyType = bodyType;
+        System.out.println("Toyota Premio constructor called");
+    }
+
+    @Override
+    public void carType() {
+        System.out.println("Car Type: Premium sedan");
+    }
+
+    @Override
+    public void status() {
+        System.out.println("Status: Toyota Premium Running");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("\n== Car Information ==");
+
+        // Object creation (Upcasting)
+        Car car = new ToyotaPremio("white", "Primo Gx", "Japan", 2024, "Sedan");
+
+        car.carType();
+        car.status();
+
+        System.out.println("Color : " + car.color);
+        System.out.println("Model : " + car.model);
+
+        System.out.println("\n== Downcasting Section ==");
+        
+        // Downcasting from Car to Toyota
+        Toyota toyota = (Toyota) car;
+        System.out.println("MadeIn : " + toyota.madeIn);
+        System.out.println("MadeYear : " + toyota.madeYear);
+
+        // Downcasting from Toyota to ToyotaPremio
+        ToyotaPremio toyotaPremio = (ToyotaPremio) toyota;
+        System.out.println("Body Type : " + toyotaPremio.bodyType);
+    }
+}
