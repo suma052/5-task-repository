@@ -1,0 +1,59 @@
+class Animal {
+    protected String hairColor;
+    protected int age;
+
+    Animal(String hairColor, int age) {
+        this.hairColor = hairColor;
+        this.age = age;
+        System.out.println("Animal Constructor");
+    }
+}
+
+class Human extends Animal {
+    protected String name;
+
+    Human(String hairColor, int age, String name) {
+        super(hairColor, age);
+        this.name = name;
+        System.out.println("Human Constructor");
+    }
+}
+
+class Teacher extends Human {
+    protected String subject;
+
+    Teacher(String hairColor, int age, String name, String subject) {
+        super(hairColor, age, name);
+        this.subject = subject;
+        System.out.println("Teacher Constructor");
+    }
+}
+
+class JavaTeacher extends Teacher {
+    private int experience;
+
+    JavaTeacher(String hairColor, int age, String name,
+                String subject, int experience) {
+        super(hairColor, age, name, subject);
+        this.experience = experience;
+        System.out.println("JavaTeacher Constructor");
+    }
+
+    void display() {
+        System.out.println("Name: " + super.name);
+        System.out.println("Age: " + super.age);
+        System.out.println("Hair Color: " + super.hairColor);
+        System.out.println("Subject: " + super.subject);
+        System.out.println("Experience: " + experience + " years");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+
+        JavaTeacher jt =
+            new JavaTeacher("White", 40, "Rahim", "Java", 12);
+
+        jt.display();
+    }
+}
