@@ -1,0 +1,19 @@
+class Test {
+
+    void show(int x) {
+        System.out.println("Integer");
+    }
+
+    void show(String s) {
+        System.out.println("String");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Test t = new Test();
+
+        t.show(10);
+        t.show("Hello");
+    }
+}
